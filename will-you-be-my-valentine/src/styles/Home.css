@@ -1,0 +1,41 @@
+.cinamorol-gif {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+}
+
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.bubble-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  animation: floatUpDown 1.5s ease-in-out infinite
+}
+
+.text-bubble-1 {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -2;
+}
+
+.text-content {
+  position: relative; 
+  z-index: 1;
+  color: #a86a4c; 
+  font-weight: bold;
+  padding: 20px;
+}

@@ -4,7 +4,7 @@ import Textbubble1 from "../assets/img/textbubble1.png";
 import Cat from "../assets/gif/cat.gif";
 import HelloKitty from "../assets/gif/hellokitty.gif";
 import DefaultButton from "./Buttons/DefaultButton.tsx";
-import React, { useState } from "react";
+import { useState } from "react";
 import "../styles/Home.css";
 
 const content = [

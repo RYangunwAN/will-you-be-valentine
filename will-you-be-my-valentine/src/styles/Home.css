@@ -17,12 +17,32 @@
   animation: floatUpDown 1.5s ease-in-out infinite
 }
 
-.text-bubble {
+.text-bubble1 {
   position: absolute;
   top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -2;
+}
+
+.text-bubble2 {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -2;
+  object-fit: contain;
+  height: 150px;
+}
+
+.text-bubble3 {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -2;
+  object-fit: contain;
+  height: 150px;
 }
 
 .text-content {
@@ -52,4 +72,9 @@
   max-width: 225px;
   height: auto;
   object-fit: contain;
+}
+
+.maintenance-text {
+  color: #a86a4c; 
+  font-size: 24px;
 }

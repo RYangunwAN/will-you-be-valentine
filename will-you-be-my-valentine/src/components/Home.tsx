@@ -3,6 +3,7 @@ import Cinnamoroll from "../assets/gif/cinnamoroll.gif";
 import Textbubble1 from "../assets/img/textbubble1.png";
 import Textbubble2 from "../assets/img/textbubble2.png";
 import Textbubble3 from "../assets/img/textbubble3.png";
+import Music from "../assets/music/blue.mp3";
 import Cat from "../assets/gif/cat.gif";
 import HelloKitty from "../assets/gif/hellokitty.gif";
 import HeartCinamoroll from "../assets/gif/heartcinamoroll.gif";
@@ -64,7 +65,7 @@ const Home = () => {
   const handleToggle = () => {
     const wrapper = document.querySelector(".content-wrapper");
     if (!wrapper) return; // Avoid errors if element isn't found
-  
+
     wrapper.classList.add("fade-out");
     setTimeout(() => {
       setIndex((prevIndex) => (prevIndex + 1) % content.length);
@@ -72,9 +73,6 @@ const Home = () => {
       wrapper.classList.remove("fade-out");
     }, 300);
   };
-  
-  
-  
 
   const handleNoClick = () => {
     setIsNoDisabled(true);
@@ -82,6 +80,9 @@ const Home = () => {
 
   return (
     <section className="home" id="home">
+      <audio loop autoPlay muted>
+        <source src={Music} type="audio/mp3" />
+      </audio>
       <Container>
         {index < 3 ? (
           <>

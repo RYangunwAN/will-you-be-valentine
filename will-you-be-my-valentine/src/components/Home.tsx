@@ -62,9 +62,19 @@ const Home = () => {
   const [isNoDisabled, setIsNoDisabled] = useState(false);
 
   const handleToggle = () => {
-    setIndex((prevIndex) => (prevIndex + 1) % content.length);
-    setIsNoDisabled(false);
+    const wrapper = document.querySelector(".content-wrapper");
+    if (!wrapper) return; // Avoid errors if element isn't found
+  
+    wrapper.classList.add("fade-out");
+    setTimeout(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % content.length);
+      setIsNoDisabled(false);
+      wrapper.classList.remove("fade-out");
+    }, 300);
   };
+  
+  
+  
 
   const handleNoClick = () => {
     setIsNoDisabled(true);
@@ -75,40 +85,46 @@ const Home = () => {
       <Container>
         {index < 3 ? (
           <>
-            <Row className="w-50">
-              <div className="bubble-container">
-                <img
-                  src={content[index].srcTextBubble}
-                  alt="cute thoughts here!"
-                  className={content[index].classNameBubble}
-                />
-                <h3 className="text-content">{content[index].text}</h3>
-              </div>
-            </Row>
-            <Row className="d-flex align-items-center justify-content-center mt-3">
-              <img
-                src={content[index].srcGif}
-                alt="cute gif here!"
-                className={`${content[index].className}`} // Apply dynamic class
-              />
-            </Row>
-            <Row className="mt-4 d-flex">
-              <Col>
-                <DefaultButton
-                  text={content[index].textBtnYes}
-                  onClick={handleToggle}
-                />
-              </Col>
-              <Col>
-                {index > 1 && (
-                  <DefaultButton
-                    text={content[index].textBtnNo}
-                    onClick={handleNoClick}
-                    disabled={isNoDisabled}
+            <div key={index} className="content-wrapper">
+              <Row className="w-50">
+                <div className="bubble-container">
+                  <img
+                    key={index}
+                    src={content[index].srcTextBubble}
+                    alt="cute thoughts here!"
+                    className={`${content[index].classNameBubble} fade-in`}
                   />
-                )}
-              </Col>
-            </Row>
+                  <h3 key={index} className="text-content slide-up">
+                    {content[index].text}
+                  </h3>
+                </div>
+              </Row>
+              <Row className="d-flex align-items-center justify-content-center mt-3">
+                <img
+                  key={index}
+                  src={content[index].srcGif}
+                  alt="cute gif here!"
+                  className={`${content[index].className} fade-in`}
+                />
+              </Row>
+              <Row className="mt-4 d-flex">
+                <Col>
+                  <DefaultButton
+                    text={content[index].textBtnYes}
+                    onClick={handleToggle}
+                  />
+                </Col>
+                <Col>
+                  {index > 1 && (
+                    <DefaultButton
+                      text={content[index].textBtnNo}
+                      onClick={handleNoClick}
+                      disabled={isNoDisabled}
+                    />
+                  )}
+                </Col>
+              </Row>
+            </div>
             <Row>
               {isNoDisabled && (
                 <p className="maintenance-text mt-5">
